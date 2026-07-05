@@ -11,7 +11,7 @@ use Tests\TestCase;
 class HomePageLatestArticlesTest extends TestCase
 {
     #[Test]
-    public function test_published_articles_are_ordered_by_latest_publication_date_with_created_at_fallback(): void
+    public function test_published_articles_are_ordered_by_latest_created_date(): void
     {
         Schema::dropIfExists('articles');
         Schema::create('articles', function (Blueprint $table): void {
@@ -82,16 +82,14 @@ class HomePageLatestArticlesTest extends TestCase
 
         $latestArticles = Article::query()
             ->published()
-            ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN 0 ELSE 1 END ASC')
-            ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN published_at ELSE created_at END DESC')
             ->orderBy('created_at', 'desc')
             ->take(4)
             ->get();
 
         $this->assertSame([
-            $newestPublishedArticle->id,
-            $olderPublishedArticle->id,
             $newerByCreatedArticle->id,
+            $olderPublishedArticle->id,
+            $newestPublishedArticle->id,
         ], $latestArticles->pluck('id')->all());
     }
 }

@@ -357,22 +357,9 @@ public function services()
         $categorySlug = $request->get('category');
         $tagSlug = $request->get('tag');
 
-        // Get featured article (only if no filters applied)
-        $featuredArticle = null;
-        if (!$search && !$categorySlug && !$tagSlug) {
-            $featuredArticle = Article::with(['category', 'author'])
-                ->published()
-                ->orderBy('is_featured', 'desc')
-                ->orderBy('created_at', 'desc')
-                ->first();
-        }
-
         // Build articles query
         $articlesQuery = Article::with(['category', 'author', 'tags'])
             ->published()
-            ->when($featuredArticle, function ($query) use ($featuredArticle) {
-                return $query->where('id', '!=', $featuredArticle->id);
-            })
             ->when($search, function ($query) use ($search) {
                 return $query->where(function ($q) use ($search) {
                     $q->where('title', 'like', "%{$search}%")
@@ -407,7 +394,6 @@ public function services()
         $currentTag = $tagSlug ? \App\Models\Tag::where('slug', $tagSlug)->first() : null;
 
         return view('pages.blog', compact(
-            'featuredArticle', 
             'articles', 
             'categories', 
             'popularTags',
