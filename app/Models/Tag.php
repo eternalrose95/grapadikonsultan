@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,7 +23,7 @@ class Tag extends Model
     /**
      * Get tags with article count, ordered by popularity
      */
-    public function scopePopular($query, $limit = 10)
+    public function scopePopular(Builder $query, int $limit = 10): Builder
     {
         return $query->withCount('articles')
             ->orderBy('articles_count', 'desc')

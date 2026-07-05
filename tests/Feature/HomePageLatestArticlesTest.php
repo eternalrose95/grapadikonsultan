@@ -92,4 +92,87 @@ class HomePageLatestArticlesTest extends TestCase
             $newestPublishedArticle->id,
         ], $latestArticles->pluck('id')->all());
     }
+
+    #[Test]
+    public function test_blog_page_hero_card_uses_latest_created_article_when_no_filters_are_active(): void
+    {
+        Schema::dropIfExists('article_tag');
+        Schema::dropIfExists('tags');
+        Schema::dropIfExists('categories');
+        Schema::dropIfExists('site_settings');
+        Schema::dropIfExists('articles');
+        Schema::create('articles', function (Blueprint $table): void {
+            $table->id();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->longText('content')->nullable();
+            $table->text('excerpt')->nullable();
+            $table->boolean('is_published')->default(false);
+            $table->boolean('is_featured')->default(false);
+            $table->timestamp('published_at')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->integer('reading_time')->nullable();
+            $table->integer('views_count')->default(0);
+            $table->string('image_url')->nullable();
+            $table->unsignedBigInteger('author_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
+        });
+        Schema::create('site_settings', function (Blueprint $table): void {
+            $table->id();
+            $table->string('key')->unique();
+            $table->text('value')->nullable();
+            $table->timestamps();
+        });
+        Schema::create('categories', function (Blueprint $table): void {
+            $table->id();
+            $table->string('category_name');
+            $table->string('slug')->unique();
+            $table->timestamps();
+        });
+        Schema::create('tags', function (Blueprint $table): void {
+            $table->id();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->timestamps();
+        });
+        Schema::create('article_tag', function (Blueprint $table): void {
+            $table->id();
+            $table->unsignedBigInteger('article_id');
+            $table->unsignedBigInteger('tag_id');
+            $table->timestamps();
+        });
+
+        $olderArticle = Article::create([
+            'title' => 'Older article',
+            'slug' => 'older-article',
+            'content' => 'Older article content',
+            'excerpt' => 'Older article excerpt',
+            'is_published' => true,
+            'published_at' => now()->subDays(3),
+        ]);
+        $olderArticle->forceFill([
+            'created_at' => now()->subDays(3),
+            'updated_at' => now()->subDays(3),
+        ])->saveQuietly();
+
+        $latestArticle = Article::create([
+            'title' => 'Newest created article',
+            'slug' => 'newest-created-article',
+            'content' => 'Newest created article content',
+            'excerpt' => 'Newest created article excerpt',
+            'is_published' => true,
+            'published_at' => null,
+        ]);
+        $latestArticle->forceFill([
+            'created_at' => now()->subHour(),
+            'updated_at' => now()->subHour(),
+        ])->saveQuietly();
+
+        $response = $this->get(route('blog'));
+
+        $response->assertStatus(200);
+        $response->assertSee('Latest Article');
+        $response->assertSee($latestArticle->title);
+    }
 }

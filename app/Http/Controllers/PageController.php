@@ -357,9 +357,20 @@ public function services()
         $categorySlug = $request->get('category');
         $tagSlug = $request->get('tag');
 
+        $latestHeroArticle = null;
+        if (!$search && !$categorySlug && !$tagSlug) {
+            $latestHeroArticle = Article::with(['category', 'author'])
+                ->published()
+                ->orderBy('created_at', 'desc')
+                ->first();
+        }
+
         // Build articles query
         $articlesQuery = Article::with(['category', 'author', 'tags'])
             ->published()
+            ->when($latestHeroArticle, function ($query) use ($latestHeroArticle) {
+                return $query->where('id', '!=', $latestHeroArticle->id);
+            })
             ->when($search, function ($query) use ($search) {
                 return $query->where(function ($q) use ($search) {
                     $q->where('title', 'like', "%{$search}%")
@@ -394,6 +405,7 @@ public function services()
         $currentTag = $tagSlug ? \App\Models\Tag::where('slug', $tagSlug)->first() : null;
 
         return view('pages.blog', compact(
+            'latestHeroArticle',
             'articles', 
             'categories', 
             'popularTags',
