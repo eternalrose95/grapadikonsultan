@@ -182,7 +182,7 @@
                         <x-article-card 
                             :title="$article->title"
                             :image="$article->image_display"
-                            :date="$article->created_at->format('F d, Y')"
+                            :date="($article->published_at ?? $article->created_at)->format('F d, Y')"
                             :category="$article->category->category_name ?? 'General'"
                             :categorySlug="$article->category->slug ?? null"
                             :link="route('blog.show', $article->slug)"

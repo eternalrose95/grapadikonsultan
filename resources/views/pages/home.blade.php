@@ -210,7 +210,7 @@
                             <x-article-card
                                 :title="$article->title"
                                 :image="$article->image_display"
-                                :date="$article->published_at?->format('d M Y')"
+                                :date="($article->published_at ?? $article->created_at)->format('d M Y')"
                                 :link="'/' . $article->slug"
                                 :category="$article->category?->category_name"
                                 :categorySlug="$article->category?->slug"
