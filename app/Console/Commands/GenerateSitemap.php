@@ -3,10 +3,10 @@
 namespace App\Console\Commands;
 
 use App\Models\Article;
+use App\Models\Portfolio;
 use App\Models\Service;
 use App\Support\SitemapXmlBuilder;
 use Illuminate\Console\Command;
-// use Illuminate\Support\Facades\URL;
 
 class GenerateSitemap extends Command
 {
@@ -41,26 +41,48 @@ class GenerateSitemap extends Command
                     'priority' => $article->is_featured ? '0.9' : '0.7',
                 ];
             })
+            ->values()
             ->toArray();
 
-        $serviceUrls = Service::query()->get()->map(function ($service) use ($baseUrl) {
-            return [
-                'loc' => $baseUrl . '/services/' . $service->slug,
-                'lastmod' => $service->updated_at?->toDateString() ?? now()->toDateString(),
-                'changefreq' => 'monthly',
-                'priority' => '0.8',
-            ];
-        })->toArray();
+        $serviceUrls = Service::query()
+            ->orderBy('updated_at', 'desc')
+            ->get()
+            ->map(function ($service) use ($baseUrl) {
+                return [
+                    'loc' => $baseUrl . '/services/' . $service->slug,
+                    'lastmod' => $service->updated_at?->toDateString() ?? now()->toDateString(),
+                    'changefreq' => 'monthly',
+                    'priority' => '0.8',
+                ];
+            })
+            ->values()
+            ->toArray();
+
+        $portfolioUrls = Portfolio::query()
+            ->orderBy('updated_at', 'desc')
+            ->get()
+            ->map(function ($portfolio) use ($baseUrl) {
+                return [
+                    'loc' => $baseUrl . '/portfolio/' . $portfolio->id,
+                    'lastmod' => $portfolio->updated_at?->toDateString() ?? now()->toDateString(),
+                    'changefreq' => 'monthly',
+                    'priority' => '0.7',
+                ];
+            })
+            ->values()
+            ->toArray();
 
         file_put_contents(public_path('sitemap.xml'), SitemapXmlBuilder::buildUrlSet($pages));
         file_put_contents(public_path('sitemap-pages.xml'), SitemapXmlBuilder::buildUrlSet($pages));
         file_put_contents(public_path('sitemap-blog.xml'), SitemapXmlBuilder::buildUrlSet($blogUrls));
         file_put_contents(public_path('sitemap-services.xml'), SitemapXmlBuilder::buildUrlSet($serviceUrls));
+        file_put_contents(public_path('sitemap-portfolio.xml'), SitemapXmlBuilder::buildUrlSet($portfolioUrls));
 
         $indexXml = SitemapXmlBuilder::buildIndex([
             ['loc' => $baseUrl . '/sitemap-pages.xml', 'lastmod' => now()->toDateString()],
             ['loc' => $baseUrl . '/sitemap-blog.xml', 'lastmod' => now()->toDateString()],
             ['loc' => $baseUrl . '/sitemap-services.xml', 'lastmod' => now()->toDateString()],
+            ['loc' => $baseUrl . '/sitemap-portfolio.xml', 'lastmod' => now()->toDateString()],
         ]);
         file_put_contents(public_path('sitemap-index.xml'), $indexXml);
 
