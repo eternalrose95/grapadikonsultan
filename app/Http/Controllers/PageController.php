@@ -69,6 +69,7 @@ class PageController extends Controller
         // Latest Articles for News Section (4 articles)
         $latestArticles = Article::with(['category', 'author'])
             ->published()
+            ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN 0 ELSE 1 END ASC')
             ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN published_at ELSE created_at END DESC')
             ->orderBy('created_at', 'desc')
             ->take(4)
@@ -368,7 +369,8 @@ public function services()
                         ->orWhereNull('is_featured');
                 })
                 ->orderBy('is_featured', 'desc')
-                ->orderBy('created_at', 'desc')
+                ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN 0 ELSE 1 END ASC')
+                ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN published_at ELSE created_at END DESC')
                 ->first();
         }
 
@@ -395,6 +397,8 @@ public function services()
                     $q->where('slug', $tagSlug);
                 });
             })
+            ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN 0 ELSE 1 END ASC')
+            ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN published_at ELSE created_at END DESC')
             ->orderBy('created_at', 'desc');
 
         $articles = $articlesQuery->paginate(9)->appends($request->query());
@@ -497,7 +501,8 @@ public function services()
             ->when($article->category_id, function ($query) use ($article) {
                 return $query->where('category_id', $article->category_id);
             })
-            ->orderBy('created_at', 'desc')
+            ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN 0 ELSE 1 END ASC')
+            ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN published_at ELSE created_at END DESC')
             ->take(3)
             ->get();
 

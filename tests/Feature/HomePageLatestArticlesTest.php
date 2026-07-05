@@ -82,15 +82,16 @@ class HomePageLatestArticlesTest extends TestCase
 
         $latestArticles = Article::query()
             ->published()
-            ->orderByRaw('COALESCE(published_at, created_at) DESC')
+            ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN 0 ELSE 1 END ASC')
+            ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN published_at ELSE created_at END DESC')
             ->orderBy('created_at', 'desc')
             ->take(4)
             ->get();
 
         $this->assertSame([
             $newestPublishedArticle->id,
-            $newerByCreatedArticle->id,
             $olderPublishedArticle->id,
+            $newerByCreatedArticle->id,
         ], $latestArticles->pluck('id')->all());
     }
 }
