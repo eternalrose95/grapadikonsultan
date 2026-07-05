@@ -95,7 +95,7 @@
                             {{ $featuredArticle->reading_time_display }} min read
                         </span>
                         <span class="text-sm text-gray-500">•</span>
-                        <span class="text-sm text-gray-500">{{ $featuredArticle->created_at->format('F d, Y') }}</span>
+                        <span class="text-sm text-gray-500">{{ ($featuredArticle->published_at ?? $featuredArticle->created_at)->format('F d, Y') }}</span>
                         @if($featuredArticle->category)
                         <span class="text-sm text-gray-500">•</span>
                         <a href="{{ route('blog', ['category' => $featuredArticle->category->slug]) }}" class="text-sm text-primary hover:underline">
