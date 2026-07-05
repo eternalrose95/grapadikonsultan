@@ -66,10 +66,11 @@ class PageController extends Controller
             'cta_url' => SiteSetting::get('strategix_cta_url', 'https://strategix.grapadi.com'),
         ];
 
-        // Latest Articles for News Section (8 articles)
+        // Latest Articles for News Section (4 articles)
         $latestArticles = Article::with(['category', 'author'])
             ->published()
-            ->orderBy('published_at', 'desc')
+            ->orderByRaw('CASE WHEN published_at IS NOT NULL THEN published_at ELSE created_at END DESC')
+            ->orderBy('created_at', 'desc')
             ->take(4)
             ->get();
 

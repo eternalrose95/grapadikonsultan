@@ -205,7 +205,7 @@
                     </div>
 
                     {{-- Article cards grid - 4 columns --}}
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
                         @foreach($latestArticles as $article)
                             <x-article-card
                                 :title="$article->title"
