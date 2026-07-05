@@ -362,10 +362,6 @@ public function services()
         if (!$search && !$categorySlug && !$tagSlug) {
             $featuredArticle = Article::with(['category', 'author'])
                 ->published()
-                ->where(function($query) {
-                    $query->where('is_featured', true)
-                        ->orWhereNull('is_featured');
-                })
                 ->orderBy('is_featured', 'desc')
                 ->orderBy('created_at', 'desc')
                 ->first();
