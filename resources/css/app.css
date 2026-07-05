@@ -1,0 +1,515 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* ============================================
+   GLOBAL SCALING - Make everything slightly smaller
+   ============================================ */
+html {
+    font-size: 87.5%;
+    /* Base: 14px instead of 16px - scales all rem values */
+}
+
+@media (min-width: 1280px) {
+    html {
+        font-size: 90%;
+        /* Slightly larger on xl screens: 14.4px */
+    }
+}
+
+@media (min-width: 1536px) {
+    html {
+        font-size: 93.75%;
+        /* Restore closer to normal on 2xl screens: 15px */
+    }
+}
+
+/* Reduce container padding for a more compact feel */
+.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+/* Slightly tighter line heights for headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.2;
+}
+
+/* Compact spacing utilities */
+.section-compact {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+    .section-compact {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+}
+
+@theme {
+    --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+
+    /* Primary colors - Gold/Amber */
+    --color-primary-50: #FDF8E8;
+    --color-primary-100: #F9EDCC;
+    --color-primary-200: #F0D88F;
+    --color-primary-300: #E5C157;
+    --color-primary-400: #D4B04A;
+    --color-primary-500: #C9A84C;
+    --color-primary-600: #A88A3C;
+    --color-primary-700: #866D2F;
+    --color-primary-800: #6B5726;
+    --color-primary-900: #5A491F;
+    --color-primary-950: #322810;
+    --color-primary: #C9A84C;
+
+    /* Background colors - Deep Forest Green */
+    --color-background-dark: #051a11;
+    --color-surface-dark: #0a2518;
+    --color-border-dark: #153322;
+}
+
+/* Gold gradient text utility */
+.text-gold-gradient {
+    background: linear-gradient(135deg, #C9A84C 0%, #E5C157 50%, #C9A84C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+/* Base state for animated elements */
+[x-intersect] {
+    opacity: 0;
+}
+
+/* Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Fade In Up */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade In Down */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade In Left */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Fade In Right */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale In */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Zoom In */
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animation utility classes */
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.animate-fade-in-left {
+    animation: fadeInLeft 0.6s ease-out forwards;
+}
+
+.animate-fade-in-right {
+    animation: fadeInRight 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-zoom-in {
+    animation: zoomIn 0.5s ease-out forwards;
+}
+
+/* Animation delays for staggered effects */
+.delay-100 {
+    animation-delay: 0.1s;
+}
+
+.delay-200 {
+    animation-delay: 0.2s;
+}
+
+.delay-300 {
+    animation-delay: 0.3s;
+}
+
+.delay-400 {
+    animation-delay: 0.4s;
+}
+
+.delay-500 {
+    animation-delay: 0.5s;
+}
+
+.delay-600 {
+    animation-delay: 0.6s;
+}
+
+.delay-700 {
+    animation-delay: 0.7s;
+}
+
+.delay-800 {
+    animation-delay: 0.8s;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+    [x-intersect],
+    .animate-fade-in,
+    .animate-fade-in-up,
+    .animate-fade-in-down,
+    .animate-fade-in-left,
+    .animate-fade-in-right,
+    .animate-scale-in,
+    .animate-zoom-in {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* ============================================
+   ARTICLE CONTENT STYLING
+   ============================================ */
+
+/* Article Content - Prose-like styling */
+#article-content {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #374151;
+}
+
+.dark #article-content {
+    color: #d1d5db;
+}
+
+/* Headings */
+#article-content h1,
+#article-content h2,
+#article-content h3,
+#article-content h4,
+#article-content h5,
+#article-content h6 {
+    font-weight: 700;
+    line-height: 1.3;
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+    color: #111827;
+}
+
+.dark #article-content h1,
+.dark #article-content h2,
+.dark #article-content h3,
+.dark #article-content h4,
+.dark #article-content h5,
+.dark #article-content h6 {
+    color: #f9fafb;
+}
+
+#article-content h1 {
+    font-size: 2.25rem;
+}
+
+#article-content h2 {
+    font-size: 1.875rem;
+}
+
+#article-content h3 {
+    font-size: 1.5rem;
+}
+
+#article-content h4 {
+    font-size: 1.25rem;
+}
+
+#article-content h5 {
+    font-size: 1.125rem;
+}
+
+#article-content h6 {
+    font-size: 1rem;
+}
+
+/* Paragraphs */
+#article-content p {
+    margin-bottom: 1.5em;
+}
+
+/* Unordered Lists */
+#article-content ul {
+    list-style-type: disc;
+    padding-left: 1.75em;
+    margin-bottom: 1.5em;
+}
+
+#article-content ul ul {
+    list-style-type: circle;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#article-content ul ul ul {
+    list-style-type: square;
+}
+
+/* Ordered Lists */
+#article-content ol {
+    list-style-type: decimal;
+    padding-left: 1.75em;
+    margin-bottom: 1.5em;
+}
+
+#article-content ol ol {
+    list-style-type: lower-alpha;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#article-content ol ol ol {
+    list-style-type: lower-roman;
+}
+
+/* List Items */
+#article-content li {
+    margin-bottom: 0.5em;
+    padding-left: 0.25em;
+}
+
+#article-content li::marker {
+    color: #3C6142;
+    font-weight: 600;
+}
+
+.dark #article-content li::marker {
+    color: #669770;
+}
+
+/* Nested lists */
+#article-content li>ul,
+#article-content li>ol {
+    margin-top: 0.5em;
+}
+
+/* Links */
+#article-content a {
+    color: #3C6142;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+#article-content a:hover {
+    color: #2f4e34;
+}
+
+.dark #article-content a {
+    color: #669770;
+}
+
+.dark #article-content a:hover {
+    color: #96ba9d;
+}
+
+/* Blockquotes */
+#article-content blockquote {
+    border-left: 4px solid #3C6142;
+    padding-left: 1.5em;
+    margin: 1.5em 0;
+    font-style: italic;
+    color: #6b7280;
+}
+
+.dark #article-content blockquote {
+    border-left-color: #669770;
+    color: #9ca3af;
+}
+
+/* Code */
+#article-content code {
+    background-color: #f3f4f6;
+    padding: 0.125em 0.375em;
+    border-radius: 0.25em;
+    font-size: 0.875em;
+    font-family: ui-monospace, monospace;
+}
+
+.dark #article-content code {
+    background-color: #374151;
+}
+
+#article-content pre {
+    background-color: #1f2937;
+    color: #f9fafb;
+    padding: 1em;
+    border-radius: 0.5em;
+    overflow-x: auto;
+    margin: 1.5em 0;
+}
+
+#article-content pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Images */
+#article-content img {
+    border-radius: 0.5em;
+    margin: 1.5em 0;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tables */
+#article-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+}
+
+#article-content th,
+#article-content td {
+    border: 1px solid #e5e7eb;
+    padding: 0.75em 1em;
+    text-align: left;
+}
+
+.dark #article-content th,
+.dark #article-content td {
+    border-color: #374151;
+}
+
+#article-content th {
+    background-color: #f9fafb;
+    font-weight: 600;
+}
+
+.dark #article-content th {
+    background-color: #1f2937;
+}
+
+/* Strong and Bold */
+#article-content strong,
+#article-content b {
+    font-weight: 700;
+    color: #111827;
+}
+
+.dark #article-content strong,
+.dark #article-content b {
+    color: #f9fafb;
+}
+
+/* Horizontal Rule */
+#article-content hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 2em 0;
+}
+
+.dark #article-content hr {
+    border-top-color: #374151;
+}

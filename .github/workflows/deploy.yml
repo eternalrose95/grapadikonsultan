@@ -1,0 +1,98 @@
+name: Deploy to cPanel (FTP Only)
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_mysql, dom, filter, gd, json, zip
+          coverage: none
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Prepare deployment package
+        run: |
+          # Remove files not needed in production
+          rm -rf node_modules
+          rm -rf tests
+          rm -rf .git
+          rm -rf .github
+          rm -f .env
+          rm -f .env.local
+          rm -f phpunit.xml
+          rm -f vite.config.js
+          rm -f tailwind.config.js
+          rm -f postcss.config.js
+          rm -f package*.json
+          rm -rf database/database.sqlite
+          rm -f reset_mysql.sh
+          
+      - name: Deploy to cPanel via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/tests/**
+            .env
+            .env.local
+            phpunit.xml
+            database/database.sqlite
+            reset_mysql.sh
+
+      - name: Deployment notification
+        run: |
+          echo "✅ Files uploaded successfully via FTP!"
+          echo ""
+          echo "⚠️  IMPORTANT: Run these commands in cPanel Terminal:"
+          echo ""
+          echo "   cd public_html"
+          echo "   php artisan migrate --force"
+          echo "   php artisan config:cache"
+          echo "   php artisan route:cache"
+          echo "   php artisan view:cache"
+          echo ""
+          echo "Or run: bash deploy.sh /home/yourusername/public_html"

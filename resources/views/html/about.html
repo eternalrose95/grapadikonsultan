@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us - Ken Research</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;family=Lato:wght@300;400;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#D32F2F", // Vibrant Red
+              secondary: "#1A1A1A",
+              "navy-brand": "#002147", // Custom Navy for About page
+              "background-light": "#FFFFFF",
+              "background-dark": "#0A0A0A",
+              "surface-light": "#F9FAFB",
+              "surface-dark": "#171717",
+            },
+            fontFamily: {
+              display: ["Montserrat", "sans-serif"],
+              body: ["Lato", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "4px",
+              lg: "8px",
+              xl: "12px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-body transition-colors duration-300"
+  >
+    <nav
+      class="sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-gray-200 dark:border-gray-800 shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center space-x-8">
+            <a class="flex-shrink-0 flex items-center gap-2" href="#">
+              <div
+                class="w-8 h-8 bg-black dark:bg-white text-white dark:text-black flex items-center justify-center font-bold text-lg font-display"
+              >
+                K
+              </div>
+              <span
+                class="font-bold text-xl tracking-tight font-display text-black dark:text-white"
+                >KEN RESEARCH</span
+              >
+            </a>
+            <div
+              class="hidden md:flex space-x-6 text-sm font-medium text-gray-600 dark:text-gray-300"
+            >
+              <a class="hover:text-primary flex items-center gap-1" href="#"
+                >Report store
+                <span class="material-icons-outlined text-sm"
+                  >expand_more</span
+                ></a
+              >
+              <a class="hover:text-primary flex items-center gap-1" href="#"
+                >Insights
+                <span class="material-icons-outlined text-sm"
+                  >expand_more</span
+                ></a
+              >
+              <a class="hover:text-primary flex items-center gap-1" href="#"
+                >Survey
+                <span class="material-icons-outlined text-sm"
+                  >expand_more</span
+                ></a
+              >
+              <a class="hover:text-primary flex items-center gap-1" href="#"
+                >Consulting
+                <span class="material-icons-outlined text-sm"
+                  >expand_more</span
+                ></a
+              >
+            </div>
+          </div>
+          <div
+            class="hidden md:flex items-center space-x-4 text-sm font-medium"
+          >
+            <button
+              class="p-2 text-gray-400 hover:text-primary dark:text-gray-500 dark:hover:text-primary"
+            >
+              <span class="material-icons-outlined">search</span>
+            </button>
+            <a
+              class="text-gray-600 dark:text-gray-300 hover:text-primary"
+              href="#"
+              >Create New Account</a
+            >
+            <span class="text-gray-300">|</span>
+            <a
+              class="text-gray-600 dark:text-gray-300 hover:text-primary"
+              href="#"
+              >Login</a
+            >
+            <a
+              class="bg-primary hover:bg-red-700 text-white px-4 py-2 rounded shadow-sm transition flex items-center gap-1"
+              href="#"
+            >
+              Book discovery call
+              <span class="material-icons-outlined text-sm">north_east</span>
+            </a>
+          </div>
+          <div class="md:hidden flex items-center">
+            <button
+              class="text-gray-600 dark:text-gray-300 hover:text-primary focus:outline-none"
+            >
+              <span class="material-icons-outlined">menu</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="bg-white dark:bg-background-dark py-20 lg:py-28">
+      <div
+        class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+      >
+        <div>
+          <span
+            class="text-primary font-bold tracking-wider uppercase text-sm mb-2 block"
+            >About Us</span
+          >
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-navy-brand dark:text-white leading-tight mb-6"
+          >
+            Elevating Business Intelligence Through Expert Research
+          </h1>
+          <p
+            class="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed"
+          >
+            We bridge the gap between data and decision-making, providing
+            premium market intelligence that empowers global organizations to
+            act with confidence.
+          </p>
+        </div>
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+          <img
+            alt="Modern Office"
+            class="w-full h-full object-cover transform hover:scale-105 transition duration-700"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8F7ZaAHcfGYFNe000mFgHebE0riWltJElN0KolmynEOHGD_2UZtyknguj78niqtDFB2wPq4V7fHrcixfrAUdyF7IoskzAi8MmdDO9nQhXDEMxZ0z11DtGnEuiUf50boXKwietczbNd4cAmcTX1LiYljnM1emuso2qc0L6BKYl7JPQlsjCsbaFwf-bejoaBX41W4M-maiNl5LzqY7VIqh5NQuxRr4utemfzx40C4bAnDl-VtEawUJhnl96IzJnwlGlopSTIGxFa6M"
+          />
+        </div>
+      </div>
+    </section>
+    <section class="bg-surface-light dark:bg-surface-dark py-20">
+      <div
+        class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+      >
+        <div
+          class="order-2 lg:order-1 relative h-[500px] rounded-2xl overflow-hidden shadow-lg group"
+        >
+          <img
+            alt="Our Team"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDecYfCsQ7x1Y5ha7_iVk_uE9UxESeTgH_W0pFXs4CuQFSM0_D5dfroAxacOEPxbHWj3H746VURC1b-F9MWwjOAIcSD-QwxtxkE95pu-1V_pODPSRbpMGHqJFoUDGD4K10v3uS9yIQ1ybcWinqxfb67VJZKjXFQTF10Wk-j1n1snlkCyj2Mg9XCLehKcuWGJ0w0jx76gfmJ7__nyW2VnzGOb3irRrlzYWVOK7o6thraQlUqTavmmnLyPLOwH9Wb8DwSadtK0Dmzosc"
+          />
+          <div class="absolute inset-0 bg-navy-brand/10"></div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2
+            class="text-3xl md:text-4xl font-bold font-display text-navy-brand dark:text-white mb-6"
+          >
+            Our Story &amp; Mission
+          </h2>
+          <div class="w-20 h-1.5 bg-primary mb-8"></div>
+          <p
+            class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-lg"
+          >
+            Founded with a singular vision to demystify complex markets, Ken
+            Research has evolved from a boutique consultancy into a global
+            powerhouse of market intelligence. We believed that businesses
+            didn't just need data—they needed a narrative that made sense of the
+            numbers.
+          </p>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
+            Our mission is to be the lens through which leaders view the future.
+            By combining rigorous methodologies with deep industry expertise, we
+            uncover the hidden opportunities that drive sustainable growth.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="bg-white dark:bg-background-dark py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+          <h2
+            class="text-3xl md:text-4xl font-bold font-display text-navy-brand dark:text-white mb-4"
+          >
+            Our Core Values
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400">
+            The principles that guide our research and relationships.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="p-8 border border-gray-100 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 group bg-surface-light dark:bg-surface-dark"
+          >
+            <div
+              class="w-16 h-16 bg-white dark:bg-black rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:bg-navy-brand transition duration-300"
+            >
+              <span
+                class="material-icons-outlined text-navy-brand text-3xl group-hover:text-white transition"
+                >verified_user</span
+              >
+            </div>
+            <h3
+              class="text-xl font-bold font-display text-navy-brand dark:text-white mb-3"
+            >
+              Integrity
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              We uphold the highest standards of honesty, ensuring our data is
+              unbiased and our advice is sound.
+            </p>
+          </div>
+          <div
+            class="p-8 border border-gray-100 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 group bg-surface-light dark:bg-surface-dark"
+          >
+            <div
+              class="w-16 h-16 bg-white dark:bg-black rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:bg-navy-brand transition duration-300"
+            >
+              <span
+                class="material-icons-outlined text-navy-brand text-3xl group-hover:text-white transition"
+                >star</span
+              >
+            </div>
+            <h3
+              class="text-xl font-bold font-display text-navy-brand dark:text-white mb-3"
+            >
+              Excellence
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              We strive for perfection in every report, delivering insights that
+              exceed expectations.
+            </p>
+          </div>
+          <div
+            class="p-8 border border-gray-100 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 group bg-surface-light dark:bg-surface-dark"
+          >
+            <div
+              class="w-16 h-16 bg-white dark:bg-black rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:bg-navy-brand transition duration-300"
+            >
+              <span
+                class="material-icons-outlined text-navy-brand text-3xl group-hover:text-white transition"
+                >lightbulb</span
+              >
+            </div>
+            <h3
+              class="text-xl font-bold font-display text-navy-brand dark:text-white mb-3"
+            >
+              Innovation
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              We constantly evolve our methodologies to capture the pulse of
+              rapidly changing markets.
+            </p>
+          </div>
+          <div
+            class="p-8 border border-gray-100 dark:border-gray-800 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 group bg-surface-light dark:bg-surface-dark"
+          >
+            <div
+              class="w-16 h-16 bg-white dark:bg-black rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:bg-navy-brand transition duration-300"
+            >
+              <span
+                class="material-icons-outlined text-navy-brand text-3xl group-hover:text-white transition"
+                >groups</span
+              >
+            </div>
+            <h3
+              class="text-xl font-bold font-display text-navy-brand dark:text-white mb-3"
+            >
+              Collaboration
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              We work as an extension of your team, fostering partnerships that
+              lead to shared success.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-surface-light dark:bg-surface-dark py-20">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2
+            class="text-3xl md:text-4xl font-bold font-display text-navy-brand dark:text-white mb-4"
+          >
+            Leadership Team
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400">
+            Meet the minds behind our strategic insights.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition"
+          >
+            <div class="h-64 overflow-hidden">
+              <img
+                alt="CEO"
+                class="w-full h-full object-cover object-top hover:scale-110 transition duration-500"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhD3FikznShpLAamdeE8CIolrJIovxIiu7E__d0Uwj-izbFdmqxbvC5JdoUxfZySn5omrWg-HPzahvarn05yr8iDo4K8NI71ovjncSXxMKBJeiX9TtSPcmYMSkzVZqQZkgAgjEpHMwHy0fOxspbiNHHKERwWwtJX8cMWHMyVaX00ZT_eij5xKoTRdriuF0bZziTaO6CLos5i5fTe1UMaTCfbZmnbyamMVs7NNsaSAxMXiiIMDAeuO_2-NI8bYIpFBChMKPB5nQp_k"
+              />
+            </div>
+            <div class="p-6 text-center">
+              <h3 class="text-lg font-bold text-navy-brand dark:text-white">
+                James Sterling
+              </h3>
+              <p class="text-primary text-sm font-semibold mb-3">
+                Chief Executive Officer
+              </p>
+              <p
+                class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed"
+              >
+                Visionary leader with 20+ years in global market strategy and
+                consulting.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition"
+          >
+            <div class="h-64 overflow-hidden">
+              <img
+                alt="CTO"
+                class="w-full h-full object-cover object-top hover:scale-110 transition duration-500"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnlVYUzIJjOlaKwKhuelYI4NIJRyY2pY5zPHTkJfDD65g6nfMpEsxlXuTV1fsOMk_Iff6uU-dMAb-RD8mAEDUc1pSBKVpkNkHx2RTgbhfQzeo7GvOedS2iGqoKRE6gCxgoas3TMuLgaZs_gNcWoG_0sCrL7I0B9icA8B-RKPa0NzQajhOv6pkEIf_VObLK3W_xaurASbxrFJ3GKftuX-brfFw5eAiDr07V_JH0tr6GMfSuzA6cLwq3mcxHdUzOgMgr_3mu6e-EmXs"
+              />
+            </div>
+            <div class="p-6 text-center">
+              <h3 class="text-lg font-bold text-navy-brand dark:text-white">
+                Elena Rodriguez
+              </h3>
+              <p class="text-primary text-sm font-semibold mb-3">
+                Head of Research
+              </p>
+              <p
+                class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed"
+              >
+                Expert in quantitative methodologies and consumer behavior
+                analysis.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition"
+          >
+            <div class="h-64 overflow-hidden">
+              <img
+                alt="COO"
+                class="w-full h-full object-cover object-top hover:scale-110 transition duration-500"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW8TKvHJL4MHke-wLAK6fF1uOxSvqvuJjpIdDpD0d_dRAOezXAVQv_G0V7LdFTuQPLzlT_73K_vCaYvb3xQhYyMAM7kzeS5OmJYlpIwdipykqQvhAKaDqLTGjy1zVL2LA5gTqiXdtlMJZHT-qwfwso59zXHXEfT5SaKCflyT3RZN8kgX4XGhzxQCUdHw6_5yABOX6wM3i_HMWBxxcFHVzYadQrg6PyZCVbpHuq6EfrrW1-46CQ7ryvwF9_cm9c57Y9hhGUWcgsXbY"
+              />
+            </div>
+            <div class="p-6 text-center">
+              <h3 class="text-lg font-bold text-navy-brand dark:text-white">
+                David Chen
+              </h3>
+              <p class="text-primary text-sm font-semibold mb-3">
+                Chief Operations Officer
+              </p>
+              <p
+                class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed"
+              >
+                Operational excellence expert ensuring seamless project delivery
+                globally.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-white dark:bg-background-dark rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition"
+          >
+            <div class="h-64 overflow-hidden">
+              <img
+                alt="CMO"
+                class="w-full h-full object-cover object-top hover:scale-110 transition duration-500"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjqGF-JNMgLgUl-PBW-AAw5FF4ngiKUaHxIEhDBSpugyU-ZRxMMMTJfstlwh3tIWaHpamm-xWoJXyiV76_hxzqY-AOLFPYDM14dUkVUeBr8MjXHpeK5byfmOv6MnGV-pflYX4sRZre_aSefEUpnPUKVPOz5hYhcwqFh3VS4uVDBHnEmFGnZESCr2xxI-LL28jeNN2au32tmQNIzT3atvRDfM6c23SaIQ95i0GoedQC5beUKhCEiwpd8V0j-KCAr7idYysjzUvq8dU"
+              />
+            </div>
+            <div class="p-6 text-center">
+              <h3 class="text-lg font-bold text-navy-brand dark:text-white">
+                Sarah Al-Fayed
+              </h3>
+              <p class="text-primary text-sm font-semibold mb-3">
+                VP of Strategy
+              </p>
+              <p
+                class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed"
+              >
+                Strategist focused on emerging markets and digital
+                transformation trends.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-white dark:bg-background-dark py-20 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2
+            class="text-3xl md:text-4xl font-bold font-display text-navy-brand dark:text-white mb-4"
+          >
+            Our Global Footprint
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400">
+            Serving clients locally with a global perspective.
+          </p>
+        </div>
+        <div
+          class="relative w-full h-[400px] md:h-[500px] bg-slate-50 dark:bg-slate-900 rounded-3xl border border-gray-100 dark:border-gray-800 flex items-center justify-center overflow-hidden"
+        >
+          <img
+            alt="World Map"
+            class="absolute w-[120%] h-auto opacity-10 dark:opacity-20 grayscale pointer-events-none"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKyS4ZNXoxzUZWZJmlIYu1I_kU0CueX46vYYBcKdztewI9nJJcD91UzXveoua341ECu7IzItuOf9XErr0Xnl5dU8N4ig4yERIa2zr38-ujdRJwy3c4-yE4tZFLGJipNPvrwMt2F5f0i28S51H2CwTkuqgZTY93At69AnTnd5BrIT75ZqQPiqPUon-yGJn2c0Xc7DeGZPEaqJVoueHCNi_14Nouc-M1cyCsl1-TgC2Cx5h45uZ1PEeShvZ_xB90nTYcLtnmpXkiRHs"
+          />
+          <div
+            class="absolute top-[48%] left-[68%] flex flex-col items-center group cursor-pointer z-10"
+          >
+            <div
+              class="w-4 h-4 bg-primary rounded-full animate-ping absolute opacity-75"
+            ></div>
+            <div
+              class="w-4 h-4 bg-navy-brand border-2 border-white rounded-full relative z-10"
+            ></div>
+            <div
+              class="mt-2 bg-white dark:bg-black px-3 py-1 rounded shadow-lg text-xs font-bold text-navy-brand dark:text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0"
+            >
+              India
+            </div>
+          </div>
+          <div
+            class="absolute top-[45%] left-[60%] flex flex-col items-center group cursor-pointer z-10"
+          >
+            <div
+              class="w-4 h-4 bg-primary rounded-full animate-ping absolute opacity-75"
+            ></div>
+            <div
+              class="w-4 h-4 bg-navy-brand border-2 border-white rounded-full relative z-10"
+            ></div>
+            <div
+              class="mt-2 bg-white dark:bg-black px-3 py-1 rounded shadow-lg text-xs font-bold text-navy-brand dark:text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0"
+            >
+              UAE
+            </div>
+          </div>
+          <div
+            class="absolute top-[44%] left-[61%] flex flex-col items-center group cursor-pointer z-10"
+          >
+            <div
+              class="w-4 h-4 bg-primary rounded-full animate-ping absolute opacity-75"
+            ></div>
+            <div
+              class="w-4 h-4 bg-navy-brand border-2 border-white rounded-full relative z-10"
+            ></div>
+            <div
+              class="mt-2 bg-white dark:bg-black px-3 py-1 rounded shadow-lg text-xs font-bold text-navy-brand dark:text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0"
+            >
+              Qatar
+            </div>
+          </div>
+          <div
+            class="absolute top-[60%] left-[78%] flex flex-col items-center group cursor-pointer z-10"
+          >
+            <div
+              class="w-4 h-4 bg-primary rounded-full animate-ping absolute opacity-75"
+            ></div>
+            <div
+              class="w-4 h-4 bg-navy-brand border-2 border-white rounded-full relative z-10"
+            ></div>
+            <div
+              class="mt-2 bg-white dark:bg-black px-3 py-1 rounded shadow-lg text-xs font-bold text-navy-brand dark:text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0"
+            >
+              Indonesia
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+          <div class="text-center">
+            <h4 class="text-xl font-bold text-navy-brand dark:text-white">
+              India
+            </h4>
+            <p class="text-xs text-gray-500">Global Delivery Center</p>
+          </div>
+          <div class="text-center">
+            <h4 class="text-xl font-bold text-navy-brand dark:text-white">
+              UAE
+            </h4>
+            <p class="text-xs text-gray-500">MENA Headquarters</p>
+          </div>
+          <div class="text-center">
+            <h4 class="text-xl font-bold text-navy-brand dark:text-white">
+              Qatar
+            </h4>
+            <p class="text-xs text-gray-500">Strategic Office</p>
+          </div>
+          <div class="text-center">
+            <h4 class="text-xl font-bold text-navy-brand dark:text-white">
+              Indonesia
+            </h4>
+            <p class="text-xs text-gray-500">APAC Regional Hub</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-navy-brand text-white py-20">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold font-display mb-6">
+          Ready to work with us?
+        </h2>
+        <p class="text-gray-300 mb-10 text-lg">
+          Whether you're looking for insights to grow your business or a career
+          to grow your potential, we want to hear from you.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            class="bg-primary hover:bg-red-700 text-white font-bold py-3 px-8 rounded shadow-lg transition flex items-center justify-center gap-2"
+            href="#"
+          >
+            Join Our Team
+            <span class="material-icons-outlined text-sm">group_add</span>
+          </a>
+          <a
+            class="bg-transparent border border-white hover:bg-white hover:text-navy-brand text-white font-bold py-3 px-8 rounded shadow-lg transition flex items-center justify-center gap-2"
+            href="#"
+          >
+            Contact Us <span class="material-icons-outlined text-sm">mail</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    <footer
+      class="bg-background-dark text-gray-400 pt-20 pb-10 text-sm border-t border-gray-800"
+    >
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-16">
+          <div>
+            <h4
+              class="text-white font-bold mb-6 uppercase text-xs tracking-wider"
+            >
+              About Ken Research
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a class="hover:text-primary transition" href="#">Home</a>
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#">About Us</a>
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#">Services</a>
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#">Categories</a>
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#">News</a>
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#">Careers</a>
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="text-white font-bold mb-6 uppercase text-xs tracking-wider"
+            >
+              Resources
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a class="hover:text-primary transition" href="#">Blogs</a>
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#"
+                  >Industry Reports</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#"
+                  >Company Research Reports</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#"
+                  >Country Research Reports</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#"
+                  >Bundle Reports</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#"
+                  >Dossier 360</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#"
+                  >Go To Market Strategy</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#"
+                  >Paid Press Release</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="text-white font-bold mb-6 uppercase text-xs tracking-wider"
+            >
+              Expertise &amp; Services
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a class="hover:text-primary transition" href="#"
+                  >Industry Speaks</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#"
+                  >Terms &amp; Conditions</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#">Disclaimer</a>
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#">FAQ's</a>
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#">Site Map</a>
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#">IT Support</a>
+              </li>
+              <li>
+                <a class="hover:text-primary transition" href="#"
+                  >Website Issue</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-span-2 lg:col-span-2">
+            <h4
+              class="text-white font-bold mb-6 uppercase text-xs tracking-wider"
+            >
+              How We Are Different?
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <ul class="space-y-3">
+                <li>
+                  <a class="hover:text-primary transition" href="#"
+                    >Ken Research Vs. BCC Research</a
+                  >
+                </li>
+                <li>
+                  <a class="hover:text-primary transition" href="#"
+                    >Ken Research Vs. Euromonitor Int.</a
+                  >
+                </li>
+                <li>
+                  <a class="hover:text-primary transition" href="#"
+                    >Ken Research Vs. Nielsen</a
+                  >
+                </li>
+                <li>
+                  <a class="hover:text-primary transition" href="#"
+                    >Ken Research Vs. Marketsand Markets</a
+                  >
+                </li>
+              </ul>
+              <ul class="space-y-3">
+                <li>
+                  <a class="hover:text-primary transition" href="#"
+                    >Ken Research Vs. Mordor</a
+                  >
+                </li>
+                <li>
+                  <a class="hover:text-primary transition" href="#"
+                    >Ken Research Vs. McKinsey</a
+                  >
+                </li>
+                <li>
+                  <a class="hover:text-primary transition" href="#"
+                    >Ken Research Vs. S&amp;P Global</a
+                  >
+                </li>
+                <li>
+                  <a class="hover:text-primary transition" href="#"
+                    >Ken Research Vs. Grand View Research</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16 border-t border-gray-800 pt-10 text-xs"
+        >
+          <div>
+            <h5 class="text-white font-bold mb-2">Company Overview</h5>
+            <p class="mb-2 text-gray-500">INDIA</p>
+            <p class="leading-relaxed">
+              Unit 14, Tower B3, Spaze I Tech Business Park, Sohna Road, sector
+              49 Gurgaon, Haryana - 122001, India
+            </p>
+          </div>
+          <div>
+            <h5 class="text-white font-bold mb-2 opacity-0">.</h5>
+            <p class="mb-2 text-gray-500">UAE</p>
+            <p class="leading-relaxed">
+              105, Al Jaz1b, Street no 2 the Greens Dubai United Arab Emirates
+            </p>
+          </div>
+          <div>
+            <h5 class="text-white font-bold mb-2 opacity-0">.</h5>
+            <p class="mb-2 text-gray-500">INDONESIA</p>
+            <p class="leading-relaxed">
+              The Icon BSD City, Jl. Verdant View IIA No.15, Tangerang Regency,
+              Province Banten-15345, Indonesia
+            </p>
+          </div>
+          <div>
+            <h5 class="text-white font-bold mb-2 opacity-0">.</h5>
+            <p class="mb-2 text-gray-500">QATAR</p>
+            <p class="leading-relaxed">
+              Office no. 9, Building no. 171, Zone no. 42, Street no. 230,
+              Al-Rehab Complex, C-Ring road Doha, Qatar - PO Box no. 30867,
+              QATAR
+            </p>
+          </div>
+        </div>
+        <div
+          class="flex flex-col md:flex-row items-end justify-between border-t border-gray-800 pt-10"
+        >
+          <div class="mb-8 md:mb-0">
+            <h1
+              class="text-8xl md:text-9xl font-bold text-white tracking-tighter leading-none select-none"
+            >
+              Ken
+            </h1>
+          </div>
+          <div class="w-full md:w-auto md:max-w-md">
+            <p class="mb-2 flex items-center gap-2 text-white">
+              <span class="material-icons-outlined text-sm">email</span> For
+              Queries: support@kenresearch.com
+            </p>
+            <p class="text-xs text-gray-500 mb-4">
+              Subscribe to our Newsletter<br />Never Miss out on an update from
+              us
+            </p>
+            <div class="flex">
+              <input
+                class="bg-gray-800 border-none text-white px-4 py-3 w-full rounded-l focus:ring-1 focus:ring-primary outline-none text-sm"
+                placeholder="Enter your email address"
+                type="email"
+              />
+              <button
+                class="bg-primary hover:bg-red-700 text-white px-6 py-3 rounded-r font-bold text-sm flex items-center gap-2 transition"
+              >
+                Subscribe
+                <span class="material-icons-outlined text-sm">north_east</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col md:flex-row justify-between items-center mt-12 pt-8 border-t border-gray-800 text-xs text-gray-600"
+        >
+          <div class="flex gap-6 mb-4 md:mb-0">
+            <a class="hover:text-white" href="#">Terms &amp; Conditions</a>
+            <a class="hover:text-white" href="#">Privacy Policy</a>
+            <a class="hover:text-white" href="#">Cookie Policy</a>
+          </div>
+          <div>
+            © Copyright 2026, Ken Research Pvt. Ltd. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
