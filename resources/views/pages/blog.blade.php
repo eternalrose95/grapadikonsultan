@@ -95,7 +95,7 @@
                             {{ $featuredArticle->reading_time_display }} min read
                         </span>
                         <span class="text-sm text-gray-500">•</span>
-                        <span class="text-sm text-gray-500">{{ ($featuredArticle->published_at ?? $featuredArticle->created_at)->format('F d, Y') }}</span>
+                        <span class="text-sm text-gray-500">{{ $featuredArticle->created_at->format('F d, Y') }}</span>
                         @if($featuredArticle->category)
                         <span class="text-sm text-gray-500">•</span>
                         <a href="{{ route('blog', ['category' => $featuredArticle->category->slug]) }}" class="text-sm text-primary hover:underline">
@@ -182,7 +182,7 @@
                         <x-article-card 
                             :title="$article->title"
                             :image="$article->image_display"
-                            :date="($article->published_at ?? $article->created_at)->format('F d, Y')"
+                            :date="$article->created_at->format('F d, Y')"
                             :category="$article->category->category_name ?? 'General'"
                             :categorySlug="$article->category->slug ?? null"
                             :link="route('blog.show', $article->slug)"
